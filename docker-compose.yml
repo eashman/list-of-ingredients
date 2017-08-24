@@ -1,0 +1,22 @@
+version: '3'
+
+volumes:
+  pg-data:
+    driver: local
+
+services:
+  web:
+    build: .
+    command: bundle exec rake start
+    volumes:
+      - .:/opt/coplannery
+      - /public:/opt/coplannery/public
+    links:
+      - db
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+  db:
+    image: postgres:latest
+    volumes:
+      - pg-data:/var/lib/postgresql/data
