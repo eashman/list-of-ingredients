@@ -28,5 +28,5 @@ test:
 production:
   <<: *default
   database: copl_rails_prod
-  user: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  user: <%= ENV['COPL_POSTGRES_USER'] %>
+  password: <%= ENV['COPL_POSTGRES_PASSWORD'] %>
