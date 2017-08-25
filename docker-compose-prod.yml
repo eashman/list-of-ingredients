@@ -31,11 +31,11 @@ services:
       POSTGRES_PASSWORD: $COPL_POSTGRES_PASSWORD
       POSTGRES_USER: $COPL_POSTGRES_USER
   nginx:
-    image: nginx:latest
+    build:
+      context: .
+      dockerfile: ./config/nginx/Dockerfile
     ports:
       - "80:80"
-    volumes:
-      - ./config/nginx:/etc/nginx/conf.d
     volumes_from:
       - web
     depends_on:
